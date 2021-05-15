@@ -15,15 +15,15 @@ let
   objects-src = pkgs.fetchFromGitHub {
     owner = "OpenRCT2";
     repo = "objects";
-    rev = "v1.0.21";
-    sha256 = "b081f885311f9afebc41d9dd4a68b7db4cf736eb815c04e307e1a426f08cfa35";
+    rev = "v1.2";
+    sha256 = "0crjzkdhcddlg3nlxnz0p4li54whx8yl6w7i968xhl0ph5zj6j2y";
   };
 
   title-sequences-src = pkgs.fetchFromGitHub {
     owner = "OpenRCT2";
     repo = "title-sequences";
-    rev = "v0.1.2b";
-    sha256 = "a220b4c3cd3180bebb261cc59141b7fb290b433631ba9c7587a4f2c9f7dc4e4c";
+    rev = "v0.1.2c";
+    sha256 = "1qdrm4q75bznmgdrpjdaiqvbf3q4vwbkkmls45izxvyg1djrpsdf";
 };
 in
 pkgs.stdenv.mkDerivation {
