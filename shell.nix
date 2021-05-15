@@ -3,9 +3,9 @@
     hostPkgs = import <nixpkgs> {};
     pinnedPkgs = hostPkgs.fetchFromGitHub {
       owner = "NixOS";
-      repo = "nixpkgs-channels";
-      rev = "08d245eb31a3de0ad73719372190ce84c1bf3aee";
-      sha256 = "1g22f8r3l03753s67faja1r0dq0w88723kkfagskzg9xy3qs8yw8";
+      repo = "nixpkgs";
+      rev = "2620ac69c01adfca54c66730eb3dbbe07e6a3024";
+      sha256 = "08cibk8n7cg3az94yhhbl04hrqbxqhgz7g73fbrr9bydpf0k9in1";
     };
   in
   import pinnedPkgs {}
@@ -34,14 +34,15 @@ pkgs.stdenv.mkDerivation {
     "-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
     "-DDOWNLOAD_OBJECTS=OFF"
     "-DDOWNLOAD_TITLE_SEQUENCES=OFF"
+    "-DDISABLE_GOOGLE_BENCHMARK=ON"
   ];
 
   postUnpack = ''
     cp -r ${objects-src}         $sourceRoot/data/object
     cp -r ${title-sequences-src} $sourceRoot/data/sequence
   '';
-  preFixup = "ln -s $out/share/openrct2 $out/bin/data";
 
+  preFixup = "ln -s $out/share/openrct2 $out/bin/data";
 
   makeFlags = ["all" "g2"];
 
@@ -49,6 +50,8 @@ pkgs.stdenv.mkDerivation {
 	pkgs.SDL2
 	pkgs.cmake
 	pkgs.curl
+  pkgs.discord-rpc
+  pkgs.duktape
 	pkgs.fontconfig
 	pkgs.freetype
 	pkgs.icu
@@ -57,6 +60,7 @@ pkgs.stdenv.mkDerivation {
   pkgs.libpng
 	pkgs.libGLU
 	pkgs.libzip
+  pkgs.nlohmann_json
 	pkgs.openssl
 	pkgs.pkgconfig
 	pkgs.speexdsp

@@ -309,3 +309,10 @@ discord-rpc
 
 # CMake
 cmake-build-*/
+
+#################
+## Nix
+#################
+
+# nix-build builds this symlink.
+/result
